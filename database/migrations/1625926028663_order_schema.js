@@ -16,14 +16,15 @@ class OrderSchema extends Schema {
         'paid',
         'finished'
       ])
-      table.timestamps()
 
       table
         .foreign('user_id')
         .reference('id')
         .inTable('users')
         .onDelete('cascade')
-    })
+
+      table.timestamps()
+      })
   }
 
   down () {
