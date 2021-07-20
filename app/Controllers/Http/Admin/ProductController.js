@@ -47,7 +47,7 @@ class ProductController {
         message: "Erro ao efetuar o cadastro!"
       })     
     }
- }
+  }
 
   /**
    * Display a single product.
