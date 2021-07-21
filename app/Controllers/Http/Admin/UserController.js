@@ -41,10 +41,10 @@ class UserController {
   async store ({ request, response }) {
     try {
       const userData = request.only([
-        username,
-        email,
-        password,
-        image_id
+        'username',
+        'email',
+        'password',
+        'image_id'
       ])
       const user = await User.create(userData)
       return response.status(201).send(user)
@@ -80,15 +80,15 @@ class UserController {
   async update ({ params: {id}, request, response }) {
     const user = await User.findOrFail(id)
     try {
-      const userData = require.only([
-        username,
-        email,
-        password,
-        image_id
+      const userData = request.only([
+        'username',
+        'email',
+        'password',
+        'image_id'
       ])
       user.merge(userData)
       await user.save()
-      return response.send(user)        
+      return response.send(user)
     } catch (error) {
       return response.status(400).send({
         message: 'Erro ao alterar o cadastro!'
